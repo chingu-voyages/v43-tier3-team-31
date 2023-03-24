@@ -2,8 +2,13 @@ import Image from 'next/image'
 import Logo from '../public/placeholder-logo.png'
 import Corn from '../public/corn.png'
 import Tomato from '../public/tomato.png'
+import Img from '../public/placeholder-image.png'
+import { Pagination } from 'flowbite-react'
 
 const IngredientGlossary = () => {
+    const onPageChange = () => {
+
+    }
     return (
         <>
             <nav className="flex justify-between px-16 py-6">
@@ -60,27 +65,92 @@ const IngredientGlossary = () => {
                     <div>
                         {/* Card Goes Here */}
                         <div className='bg-white flex rounded shadow-md overflow-hidden mb-8'>
-                            <Image className='w-full h-72  object-cover' src={Corn} alt='corn'></Image>
-                            <div className='m-8'>
-                                    <h1 className='mb-4 text-4xl font-bold'>Corn</h1>
-                                    <p className='font-semibold mb-2'>Healty Rating: ⭐⭐⭐⭐⭐</p>
-                                    <p className='text-gray-500 text-sm'>Amet id porttitor feugiat amet. Elementum nascetur ut a pulvinar mattis nunc. Sollicitudin eget nunc et eu. Arcu eget scelerisque risus non. Vestibulum sed malesuada eu senectus mattis donec consectetur. Semper velit neque nec gravida fames.</p>
+                            <Image className='w-full h-64  object-cover' src={Corn} alt='corn'></Image>
+                            <div className='mx-8 my-2'>
+                                <h1 className='mb-4 text-4xl font-bold'>Corn</h1>
+                                <p className='font-semibold mb-2'>Healty Rating: ⭐⭐⭐⭐⭐</p>
+                                <p className='text-gray-500 text-sm'>Amet id porttitor feugiat amet. Elementum nascetur ut a pulvinar mattis nunc. Sollicitudin eget nunc et eu. Arcu eget scelerisque risus non. Vestibulum sed malesuada eu senectus mattis donec consectetur. Semper velit neque nec gravida fames.</p>
                             </div>
                         </div>
                         <div className='bg-white flex rounded shadow-md overflow-hidden mb-8'>
-                            <Image className='w-full h-72  object-cover' src={Tomato} alt='corn'></Image>
-                            <div className='m-8'>
-                                    <h1 className='mb-4 text-4xl font-bold'>Tomato</h1>
-                                    <p className='font-semibold mb-2'>Healty Rating: ⭐⭐⭐⭐⭐</p>
-                                    <p className='text-gray-500 text-sm'>Amet id porttitor feugiat amet. Elementum nascetur ut a pulvinar mattis nunc. Sollicitudin eget nunc et eu. Arcu eget scelerisque risus non. Vestibulum sed malesuada eu senectus mattis donec consectetur. Semper velit neque nec gravida fames.</p>
+                            <Image className='w-full h-64  object-cover' src={Tomato} alt='corn'></Image>
+                            <div className='mx-8 my-2'>
+                                <h1 className='mb-4 text-4xl font-bold'>Tomato</h1>
+                                <p className='font-semibold mb-2'>Healty Rating: ⭐⭐⭐⭐⭐</p>
+                                <p className='text-gray-500 text-sm'>Amet id porttitor feugiat amet. Elementum nascetur ut a pulvinar mattis nunc. Sollicitudin eget nunc et eu. Arcu eget scelerisque risus non. Vestibulum sed malesuada eu senectus mattis donec consectetur. Semper velit neque nec gravida fames.</p>
                             </div>
                         </div>
 
-                        
+                        <div className='flex items-center justify-center'>
+                            <Pagination
+                                currentPage={1}
+                                onPageChange={onPageChange}
+                                showIcons={true}
+                                totalPages={100}
+                            />
+                        </div>
                     </div>
 
                     <div> {/* Related Food Posts */}
-                        <h4>Related Food Post</h4>
+                        <h4 className='text-4xl font-bold'>Related Food Post</h4>
+                        <div className='mt-8 grid grid-cols-3 gap-4'>
+                            <div className="bg-white rounded shadow-md overflow-hidden">
+                                <Image src={Img} alt='image'></Image>
+                                <div className='m-4'>
+                                    <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
+                                    <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
+                                    <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
+                                </div>
+                            </div>
+                            <div className="bg-white rounded shadow-md overflow-hidden">
+                                <Image src={Img} alt='image'></Image>
+                                <div className='m-4'>
+                                    <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
+                                    <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
+                                    <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
+                                </div>
+                            </div>
+                            <div className="bg-white rounded shadow-md overflow-hidden">
+                                <Image src={Img} alt='image'></Image>
+                                <div className='m-4'>
+                                    <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
+                                    <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
+                                    <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
+                                </div>
+                            </div>
+                            <div className="bg-white rounded shadow-md overflow-hidden">
+                                <Image src={Img} alt='image'></Image>
+                                <div className='m-4'>
+                                    <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
+                                    <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
+                                    <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
+                                </div>
+                            </div>
+                            <div className="bg-white rounded shadow-md overflow-hidden">
+                                <Image src={Img} alt='image'></Image>
+                                <div className='m-4'>
+                                    <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
+                                    <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
+                                    <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
+                                </div>
+                            </div>
+                            <div className="bg-white rounded shadow-md overflow-hidden">
+                                <Image src={Img} alt='image'></Image>
+                                <div className='m-4'>
+                                    <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
+                                    <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
+                                    <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='flex items-center justify-center m-8'>
+                            <Pagination
+                                currentPage={1}
+                                onPageChange={onPageChange}
+                                showIcons={true}
+                                totalPages={100}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
