@@ -3,10 +3,15 @@
  */
 module.exports = {
   content: [
-    "./node_modules/flowbite-react/**/*.js",
+    "./node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
     "./pages/**/*.{ts,tsx}",
     "./public/**/*.html",
   ],
-  plugins: [require("flowbite/plugin")],
-  theme: {},
-};
+  plugins: [require('flowbite/plugin')],
+  theme: {
+    backgroundImage: {
+      hero: "url('/bg1.jpg')",
+      crousel: "url('/footer.png')",
+    },
+  },
+}
