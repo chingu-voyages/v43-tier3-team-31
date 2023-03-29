@@ -8,5 +8,9 @@ module.exports = {
     "./public/**/*.html",
   ],
   plugins: [require("flowbite/plugin")],
-  theme: {},
+  theme: {
+    backgroundImage:{
+      'hero':"url('/bg1.jpg')"
+    }
+  },
 };
