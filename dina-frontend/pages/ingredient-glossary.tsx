@@ -157,4 +157,3 @@ const IngredientGlossary = () => {
 }
 
 export default IngredientGlossary
-
