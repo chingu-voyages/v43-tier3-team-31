@@ -4,12 +4,12 @@ import Logo from '../../../public/logo.png';
 
 const Navbar = () => {
     return (
-        <nav className="flex px-16 my-16 items-center">
+        <nav className="flex px-16 py-6 items-center">
             <div className='flex items-center'>
                 <Image className='inline-block ml-2 w-12 h-12 mr-2' src={Logo} alt='DiNA' width="50" height="50"></Image>
                 <span className='text-lg font-bold text-gray-700'>DiNA</span>
             </div>
-            <div className='ml-4 flex'>
+            <div className='ml-4 flex-1'>
                 <form className="flex w-96 items-center">
                     <label htmlFor="simple-search" className="sr-only">Search</label>
                     <div className="relative w-full">
