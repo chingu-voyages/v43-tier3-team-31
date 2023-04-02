@@ -9,6 +9,7 @@ import Image from "next/image";
 
 
 import Logo from '../public/logo.png'
+import PostCard from "@/components/publicPages/landing/PostCard";
 export default function Home() {
   return (
     <>
@@ -59,70 +60,7 @@ export default function Home() {
         </div>
 
         <div className="grid gap-3 grid-cols-4 my-6">
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (<PostCard key={i} />))}
         </div>
 
         <div className="flex justify-center items-center gap-2 my-16">
@@ -141,70 +79,7 @@ export default function Home() {
         </div>
 
         <div className="grid gap-3 grid-cols-4 my-6">
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
-          <div className="bg-white rounded mb-2 shadow-md overflow-hidden">
-            <Image src={Img} alt='image'></Image>
-            <div className='m-4'>
-              <p className='font-bold text-base mb-2'>Sed ac dolor sed sed aliquet ac proin vitae dui.</p>
-              <p className='text-gray-500 text-sm'>Volutpat varius non malesuada scelerisque mi. Egestas diam ut facilisi neque interdum rutrum id. Neque consectetur neque tellus et.</p>
-              <span className='text-green-400 block font-semibold text-end mt-4'>Read More...</span>
-            </div>
-          </div>
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (<PostCard key={i} />))}
         </div>
 
         <div className="flex justify-center items-center gap-2 my-16">
