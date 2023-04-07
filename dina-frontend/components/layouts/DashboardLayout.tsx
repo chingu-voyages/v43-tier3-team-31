@@ -28,7 +28,12 @@ export default function DashboardLayout({
   }, []);
   return loading ? (
     <div className="flex justify-center h-screen items-center text-2xl text-black">
-      <FontAwesomeIcon icon={faSpinner} className="fa-spin mr-4" />{" "}
+      <FontAwesomeIcon
+        width={20}
+        height={20}
+        icon={faSpinner}
+        className="fa-spin mr-4"
+      />{" "}
       Authenticating
     </div>
   ) : (
