@@ -1,7 +1,13 @@
 import type { FC } from "react";
 import { Button, DarkThemeToggle, Navbar } from "flowbite-react";
-
+import { useRouter } from "next/router";
+import { auth } from "../../../utils/firebaseClient";
 const DashboardNavbar: FC = function () {
+  const router = useRouter();
+  const logout = async () => {
+    await auth.signOut();
+    router.push("/login");
+  };
   return (
     <Navbar fluid>
       <div className="w-full p-3 lg:px-5 lg:pl-3">
@@ -15,8 +21,8 @@ const DashboardNavbar: FC = function () {
             </Navbar.Brand>
           </div>
           <div className="flex items-center gap-3">
-            <Button color="primary" href="/">
-              Navbar options goes here
+            <Button color="failure" onClick={logout}>
+              Logout
             </Button>
             <DarkThemeToggle />
           </div>
