@@ -7,11 +7,16 @@ function DashboardSidebar() {
       <div className="h-screen py-5 px-3 bg-white border-r border-gray-200 dark:bg-gray-800 dark:border-gray-700 flex flex-col justify-between">
         <ul className="space-y-2">
           <li>
-            <SidebarItem href="overview" iconName={faCoffee}>
+            <SidebarItem href="/dashboard/overview" iconName={faCoffee}>
               Overview
             </SidebarItem>
           </li>
           <li>
+            <SidebarItem href="/dashboard/my-post/posts" iconName={faCoffee}>
+              My Posts
+            </SidebarItem>
+          </li>
+          {/* <li>
             <button
               type="button"
               className="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 "
@@ -47,9 +52,9 @@ function DashboardSidebar() {
                 </SidebarItem>
               </li>
             </ul>
-          </li>
+          </li> */}
           <li>
-            <SidebarItem href="ingredient-list" iconName={faCoffee}>
+            <SidebarItem href="/dashboard/ingredient-list" iconName={faCoffee}>
               Ingredients list
             </SidebarItem>
           </li>
