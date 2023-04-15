@@ -46,16 +46,11 @@ function DashboardSidebar() {
                   Likes
                 </SidebarItem>
               </li>
-              <li>
-                <SidebarItem href="ingredients" iconName={faCoffee}>
-                  Ingredients
-                </SidebarItem>
-              </li>
             </ul>
           </li>
           <li>
-            <SidebarItem href="ingredients" iconName={faCoffee}>
-              Ingredients
+            <SidebarItem href="ingredient-list" iconName={faCoffee}>
+              Ingredients list
             </SidebarItem>
           </li>
         </ul>
