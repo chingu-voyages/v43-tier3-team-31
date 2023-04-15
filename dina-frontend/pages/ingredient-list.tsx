@@ -8,7 +8,7 @@ const IngredientList = () => {
     return (
         <div>
             <DashboardNavbar />
-            <div className='flex '>
+            <div className='flex relative'>
                 <DashboardSidebar />
                 <IngredientEmptyState/>
             </div>
