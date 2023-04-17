@@ -104,7 +104,7 @@ const CreatePost = () => {
             description: description,
             imgUrl: url,
             tags: tags,
-            uid: userLogged.uid,
+            uid: userLogged?.uid,
           });
           setImage(null);
           setImagePreview(null);
