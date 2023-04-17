@@ -27,7 +27,7 @@ function CommentField({ postId, user }: { postId: string; user: any }) {
   return (
     <>
       <div className="bg-gray-50 p-4 flex items-center">
-        <form className="flex items-center flex-1">
+        <div className="flex items-center flex-1">
           <label htmlFor="commentTarget" className="sr-only">
             Search
           </label>
@@ -42,7 +42,7 @@ function CommentField({ postId, user }: { postId: string; user: any }) {
               required
             />
           </div>
-        </form>
+        </div>
         <div className="flex-none ml-4">
           <button className="" onClick={postComment}>
             {loading ? (

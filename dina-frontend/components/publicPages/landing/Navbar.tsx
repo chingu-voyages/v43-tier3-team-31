@@ -2,22 +2,25 @@ import Image from "next/image";
 import React from "react";
 import Logo from "../../../public/logo.png";
 import Link from "next/link";
+import { Button } from "flowbite-react";
 
 const Navbar = () => {
   return (
-    <nav className="sticky opacity-90 top-0 z-30 flex px-16 py-4 bg-white items-center">
+    <nav className="sticky opacity-90 top-0 z-30 flex px-16 py-4 bg-white items-center justify-between">
       <div className="flex items-center">
-        <Image
-          className="inline-block ml-2 w-12 h-12 mr-2"
-          src={Logo}
-          alt="DiNA"
-          width="50"
-          height="50"
-        ></Image>
-        <span className="text-lg font-bold text-gray-700">DiNA</span>
+        <Link href="/">
+          <Image
+            className="inline-block ml-2 w-12 h-12 mr-2"
+            src={Logo}
+            alt="DiNA"
+            width="50"
+            height="50"
+          ></Image>
+          <span className="text-lg font-bold text-gray-700">DiNA</span>
+        </Link>
       </div>
-      <div className="ml-4 flex-1">
-        <form className="flex w-96 items-center">
+      <div className="ml-4">
+        <form className="flex items-center">
           <label htmlFor="simple-search" className="sr-only">
             Search
           </label>
@@ -40,7 +43,7 @@ const Navbar = () => {
             <input
               type="text"
               id="simple-search"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search for food..."
               required
             />
@@ -50,16 +53,17 @@ const Navbar = () => {
 
       <ul className="flex gap-3 items-center">
         <li>
-          <Link href="/all-posts">All Posts</Link>
+          <Link className="text-purple" href="/all-posts">
+            <Button color="gray">All Posts</Button>
+          </Link>
         </li>
-        <li>About</li>
         <li>
           <Link href="/login">
             <button
               type="button"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             >
-              Get Started
+              Login
             </button>
           </Link>
         </li>

@@ -10,7 +10,50 @@ import Image from "next/image";
 import Logo from "../public/logo.png";
 import PostCard from "@/components/publicPages/landing/PostCard";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import {
+  collection,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
+import { db } from "@/utils/firebaseClient";
+
+type Post = {
+  uid: string;
+  id: string;
+  title: string;
+  imgUrl: string;
+  description: string;
+  timestamp: any; // Replace 'any' with a more specific type if needed
+};
+
 export default function Home() {
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const postsRef = collection(db, "posts");
+      const q = query(postsRef, orderBy("timestamp", "desc"), limit(4));
+
+      const unsubscribe = onSnapshot(q, (snapshot) => {
+        const fetchedPosts = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          title: doc.data().title,
+          imgUrl: doc.data().imgUrl,
+          description: doc.data().description,
+          timestamp: doc.data().timestamp,
+          uid: doc.data().uid,
+        }));
+        setPosts(fetchedPosts);
+      });
+
+      return () => unsubscribe();
+    };
+
+    fetchPosts();
+  }, []);
   return (
     <>
       <Navbar />
@@ -31,87 +74,43 @@ export default function Home() {
           what's in your food.
         </p>
         <div>
-          <button
-            type="button"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          >
-            Get Started &#8594;
-          </button>
-          <button
-            type="button"
-            className="text-white hover:text-blue-700 border border-white hover:bg-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-white"
-          >
-            Learn now{" "}
-          </button>
+          <Link href="/login">
+            <button
+              type="button"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
+              Get Started &#8594;
+            </button>
+          </Link>
+          <Link href="/about">
+            <button
+              type="button"
+              className="text-white hover:text-blue-700 border border-white hover:bg-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-white"
+            >
+              Learn now{" "}
+            </button>
+          </Link>
         </div>
       </div>
 
       <div className="px-16 py-16">
         <div className="ml-4">
           <p className=" text-gray-500">Explore</p>
-          <h1 className="text-3xl font-bold">Feature Post</h1>
+          <h1 className="text-3xl font-bold">Latest Posts</h1>
         </div>
 
         <div className="grid gap-3 grid-cols-4 my-6">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-            <PostCard key={i} />
-          ))}
-        </div>
-
-        <div className="flex justify-center items-center gap-2 my-16">
-          <span className="flex w-3 h-3 bg-gray-200 rounded-full"></span>
-          <span className="flex w-3 h-3 bg-gray-500 rounded-full dark:bg-gray-700"></span>
-          <span className="flex w-3 h-3 bg-gray-200 rounded-full"></span>
-          <span className="flex w-3 h-3 bg-gray-200 rounded-full"></span>
-          <span className="flex w-3 h-3 bg-gray-200 rounded-full"></span>
-          <svg
-            fill="none"
-            className="flex w-7 h-7"
-            stroke="currentColor"
-            strokeWidth={1.5}
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          {posts.map((post) => (
+            <PostCard
+              key={post.id}
+              title={post.title}
+              imgUrl={post.imgUrl}
+              description={post.description}
+              timestamp={post.timestamp}
+              uid={post.uid}
+              postId={post.id}
             />
-          </svg>
-        </div>
-        <div className="ml-4">
-          <p className=" text-gray-500">Explore</p>
-          <h1 className="text-3xl font-bold">Popular Post</h1>
-        </div>
-
-        <div className="grid gap-3 grid-cols-4 my-6">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-            <PostCard key={i} />
           ))}
-        </div>
-
-        <div className="flex justify-center items-center gap-2 my-16">
-          <span className="flex w-3 h-3 bg-gray-200 rounded-full"></span>
-          <span className="flex w-3 h-3 bg-gray-500 rounded-full dark:bg-gray-700"></span>
-          <span className="flex w-3 h-3 bg-gray-200 rounded-full"></span>
-          <span className="flex w-3 h-3 bg-gray-200 rounded-full"></span>
-          <span className="flex w-3 h-3 bg-gray-200 rounded-full"></span>
-          <svg
-            fill="none"
-            className="flex w-7 h-7"
-            stroke="currentColor"
-            strokeWidth={1.5}
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
         </div>
       </div>
       <div
