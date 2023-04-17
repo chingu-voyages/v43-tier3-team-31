@@ -1,6 +1,6 @@
 [[build]]
-command: = "next build"
-publish: = ".next"
+command = "next build"
+publish = ".next"
 
 [[plugins]]
-  package = "netlify-plugin-cypress"
+package = "netlify-plugin-cypress"
