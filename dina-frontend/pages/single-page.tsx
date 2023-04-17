@@ -1,13 +1,28 @@
 import Image from "next/image";
 import Profile from "../public/profile.png";
-import { db } from "@/utils/firebaseClient";
+import { auth, db } from "@/utils/firebaseClient";
 import { DocumentReference, doc, getDoc } from "firebase/firestore";
 import Navbar from "@/components/publicPages/landing/Navbar";
 import { useEffect, useState } from "react";
 import { GetServerSidePropsContext } from "next";
-import { Interface } from "readline";
+import CommentField from "@/components/single-post/CommentField";
+import CommentList from "@/components/single-post/CommentList";
 
-const SinglePage = ({ post }) => {
+interface UserData {
+  displayName: string;
+  email: string;
+  photoURL: string;
+  uid: string;
+}
+const SinglePage = ({ post, postId }) => {
+  const [userLogged, setUserLogged] = useState<UserData | null>(null);
+
+  auth.onAuthStateChanged(function (user) {
+    if (user) {
+      setUserLogged(user);
+    }
+  });
+
   return (
     <>
       <Navbar />
@@ -145,40 +160,8 @@ const SinglePage = ({ post }) => {
                   </svg>
                 </div>
               </div>
-
-              <div className="bg-gray-50 p-4 flex items-center">
-                <form className="flex items-center flex-1">
-                  <label htmlFor="simple-search" className="sr-only">
-                    Search
-                  </label>
-                  <div className="relative w-full">
-                    <input
-                      type="text"
-                      id="simple-search"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-4 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Comment"
-                      required
-                    />
-                  </div>
-                </form>
-                <div className="flex-none ml-4">
-                  <svg
-                    fill="none"
-                    className="w-6 h-6 dark:text-white"
-                    stroke="currentColor"
-                    strokeWidth={1.5}
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
-                    />
-                  </svg>
-                </div>
-              </div>
+              <CommentField postId={postId} user={userLogged} />
+              <CommentList postId={postId} />
             </div>
           </div>
         </div>
@@ -214,6 +197,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: {
       post,
+      postId,
     },
   };
 }
