@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Profile from "../public/profile.png";
 import { db } from "@/utils/firebaseClient";
-import { doc, getDoc } from "firebase/firestore";
+import { DocumentReference, doc, getDoc } from "firebase/firestore";
 import Navbar from "@/components/publicPages/landing/Navbar";
 import { useEffect, useState } from "react";
 import { GetServerSidePropsContext } from "next";
@@ -188,7 +188,7 @@ const SinglePage = ({ post }) => {
 };
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const postId = context.query.postId; // Get the uid from the query string
+  const postId: string | any = context.query.postId; // Get the uid from the query string
 
   const postRef = doc(db, "posts", postId);
   const postDoc = await getDoc(postRef);
