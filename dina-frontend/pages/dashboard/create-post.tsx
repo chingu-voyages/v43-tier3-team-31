@@ -4,6 +4,7 @@ import { FileInput, Label, Progress } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 import {
   getStorage,
@@ -20,6 +21,8 @@ import {
 import { onAuthStateChanged } from "firebase/auth";
 
 const CreatePost = () => {
+  const [user] = useAuthState(auth);
+
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -29,15 +32,15 @@ const CreatePost = () => {
   const [tags, setTags] = useState("");
   const [progress, setProgress] = useState(0);
 
-  const [userLogged, setUserLogged] = useState({});
+  // const [userLogged, setUserLogged] = useState({});
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUserLogged(user);
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       setUserLogged(user);
+  //     }
+  //   });
+  // }, []);
 
   const handleImageChange = (e) => {
     if (e.target.files[0]) {
@@ -104,7 +107,7 @@ const CreatePost = () => {
             description: description,
             imgUrl: url,
             tags: tags,
-            uid: userLogged?.uid,
+            uid: user.uid,
           });
           setImage(null);
           setImagePreview(null);

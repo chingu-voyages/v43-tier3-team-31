@@ -39,7 +39,7 @@ const SinglePage = ({ post }) => {
             ></Image>
             <div className="mx-8 my-2 flex flex-col">
               <h2 className="font-semibold text-xl">{post.title}</h2>
-              <div className="pt-3 flex justify-between items-center border-b pb-2 border-b-gray-300">
+              {/* <div className="pt-3 flex justify-between items-center border-b pb-2 border-b-gray-300">
                 <div className="flex-1 flex items-center gap-2">
                   <Image
                     className="w-10 h-10 rounded-full"
@@ -105,7 +105,7 @@ const SinglePage = ({ post }) => {
                     />
                   </svg>
                 </div>
-              </div>
+              </div> */}
               <div className="border-b flex-1 border-b-gray-300">
                 <p className="pt-4 text-sm pb-4">{post.description}</p>
                 <div className="flex flex-wrap">
