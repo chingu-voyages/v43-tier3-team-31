@@ -12,8 +12,19 @@ import { db } from "../utils/firebaseClient";
 import Navbar from "@/components/publicPages/landing/Navbar";
 import Link from "next/link";
 
+type Post = {
+  uid: string;
+  id: string;
+  title: string;
+  location: string;
+  imgUrl: string;
+  description: string;
+  tags: string[];
+  timestamp: any; // Replace 'any' with a more specific type if needed
+};
+
 const AllPost = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -23,7 +34,13 @@ const AllPost = () => {
       const unsubscribe = onSnapshot(q, (snapshot) => {
         const fetchedPosts = snapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data(),
+          title: doc.data().title,
+          location: doc.data().location,
+          imgUrl: doc.data().imgUrl,
+          description: doc.data().description,
+          tags: doc.data().tags,
+          timestamp: doc.data().timestamp,
+          uid: doc.data().uid,
         }));
         setPosts(fetchedPosts);
       });
@@ -33,6 +50,8 @@ const AllPost = () => {
 
     fetchPosts();
   }, []);
+
+  console.log("object", posts);
   return (
     <>
       <Navbar />

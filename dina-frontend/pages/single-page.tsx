@@ -4,16 +4,10 @@ import { db } from "@/utils/firebaseClient";
 import { doc, getDoc } from "firebase/firestore";
 import Navbar from "@/components/publicPages/landing/Navbar";
 import { useEffect, useState } from "react";
+import { GetServerSidePropsContext } from "next";
+import { Interface } from "readline";
 
 const SinglePage = ({ post }) => {
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    if (window !== undefined) {
-      JSON.parse(localStorage.getItem("auth"));
-    }
-  }, []);
-
   return (
     <>
       <Navbar />
@@ -109,7 +103,7 @@ const SinglePage = ({ post }) => {
               <div className="border-b flex-1 border-b-gray-300">
                 <p className="pt-4 text-sm pb-4">{post.description}</p>
                 <div className="flex flex-wrap">
-                  {post.tags.map((tag) => (
+                  {post.tags.map((tag: string) => (
                     <span className="bg-blue-100 mb-2 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
                       {tag}
                     </span>
@@ -193,7 +187,7 @@ const SinglePage = ({ post }) => {
   );
 };
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const postId = context.query.postId; // Get the uid from the query string
 
   const postRef = doc(db, "posts", postId);
