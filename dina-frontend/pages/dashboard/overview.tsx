@@ -5,6 +5,7 @@ function IngredientGlossary() {
     <DashboardLayout>
       <h1>Overview</h1>
     </DashboardLayout>
+    
   );
 }
 

@@ -18,7 +18,7 @@ function SidebarItem({
     <Link href={href}>
       <button
         className={`flex gap-3 items-center p-2 text-base font-normal text-gray-900 rounded-lg  group ${
-          isActive ? "bg-purple-700" : "opacity-50 hover:opacity-100"
+          isActive ? "bg-purple-700 text-white" : "opacity-50 hover:opacity-100"
         } px-5 rounded-xl`}
       >
         <FontAwesomeIcon icon={iconName} />
