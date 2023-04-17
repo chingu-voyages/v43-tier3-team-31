@@ -11,7 +11,13 @@ import Logo from "../public/logo.png";
 import PostCard from "@/components/publicPages/landing/PostCard";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { db } from "@/utils/firebaseClient";
 
 type Post = {
@@ -29,7 +35,7 @@ export default function Home() {
   useEffect(() => {
     const fetchPosts = async () => {
       const postsRef = collection(db, "posts");
-      const q = query(postsRef, orderBy("timestamp", "desc"));
+      const q = query(postsRef, orderBy("timestamp", "desc"), limit(4));
 
       const unsubscribe = onSnapshot(q, (snapshot) => {
         const fetchedPosts = snapshot.docs.map((doc) => ({
